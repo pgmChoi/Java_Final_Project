@@ -108,7 +108,11 @@ public class DB {
 	// === JTable 삭제 버튼 렌더러 === 디자인 생성
 	public static class ButtonRenderer extends JButton implements TableCellRenderer {
 		public ButtonRenderer() {
-			setText("삭제");
+		    setText("삭제");
+		    setFont(new Font("맑은 고딕", Font.PLAIN, 14));
+		    setForeground(Color.WHITE);
+		    setBackground(new Color(220, 53, 69));  // 부트스트랩의 빨간 계열
+		    setFocusPainted(false);
 		}
 
 		@Override
@@ -142,20 +146,22 @@ public class DB {
 
 		@Override
 		public Object getCellEditorValue() {
-			if (clicked) {
-				int result = JOptionPane.showConfirmDialog(button, userId + " 계정을 삭제하시겠습니까?", "확인",
-						JOptionPane.YES_NO_OPTION);
-				if (result == JOptionPane.YES_OPTION) {
-					if (DB.deleteMemberById(userId)) {
-						JOptionPane.showMessageDialog(button, "삭제 성공");
-						panel.refreshTable();
-					} else {
-						JOptionPane.showMessageDialog(button, "삭제 실패");
-					}
-				}
-			}
-			clicked = false;
-			return "삭제";
+		    if (clicked) {
+		        int result = JOptionPane.showConfirmDialog(button, userId + " 계정을 삭제하시겠습니까?", "확인",
+		                JOptionPane.YES_NO_OPTION);
+		        if (result == JOptionPane.YES_OPTION) {
+		            if (DB.deleteMemberById(userId)) {
+		                JOptionPane.showMessageDialog(button, "삭제 성공");
+
+		                // ✅ 테이블 리프레시를 안전하게 큐에 등록
+		                SwingUtilities.invokeLater(() -> panel.refreshTable());
+		            } else {
+		                JOptionPane.showMessageDialog(button, "삭제 실패");
+		            }
+		        }
+		    }
+		    clicked = false;
+		    return "삭제";
 		}
 	}
 
@@ -183,10 +189,8 @@ public class DB {
                     String userId = UserSession.getUsername();
 
                     // DB 삭제
-                    try (Connection conn = getConnection();
-                         PreparedStatement stmt = conn.prepareStatement(
-                                 "DELETE FROM reservations WHERE user_id = ? AND date = ? AND time = ? AND seat = ?")) {
-
+                    String sql = "DELETE FROM reservations WHERE user_id = ? AND date = ? AND time = ? AND seat = ?";
+                    try (Connection conn = getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)) {
                         stmt.setString(1, userId);
                         stmt.setString(2, date);
                         stmt.setString(3, time);

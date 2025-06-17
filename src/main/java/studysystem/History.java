@@ -50,11 +50,8 @@ public class History extends JFrame {
         String reSeat;
         String[] columnNames = { "data", "time", "seat", "delete" }; // 테이블에서 표시될 컬럼 이름
         DefaultTableModel model = new DefaultTableModel(columnNames, 0); // 기본 테이블 관리 모델 ,열 4개, 0 은 초기 행
-
-        try {
-            Connection conn = DB.getConnection(); // 연동
-            String sql = "SELECT date, time, seat FROM reservations WHERE user_id = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql); // 문구 넣기
+        String sql = "SELECT date, time, seat FROM reservations WHERE user_id = ?"; // 날짜, 시간, 좌석 가져오기
+        try (Connection conn = DB.getConnection(); PreparedStatement stmt = conn.prepareStatement(sql)){ // 문구 넣기
             stmt.setString(1, UserSession.getUsername()); // 아이디
 
             ResultSet rs = stmt.executeQuery(); // select라서 excute 사용함
@@ -66,8 +63,6 @@ public class History extends JFrame {
                 Object[] col = new Object[]{date, time, seat, "delete"};
                 model.addRow(col); //addRow 함수가 Object 타입으로 매개변수를 받음
             }
-            conn.close();
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -98,7 +93,7 @@ public class History extends JFrame {
         //스크롤 기능 추가
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setOpaque(false); // 투명화
-        scrollPane.getViewport().setOpaque(false); 
+        scrollPane.getViewport().setOpaque(false); //스크롤 패널을 투명화
         scrollPane.setBounds(12, 241, 510, 233);
         mainPanel.setFont(new Font("굴림", Font.BOLD, 20));
         mainPanel.add(scrollPane);

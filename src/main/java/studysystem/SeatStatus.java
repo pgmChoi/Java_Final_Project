@@ -48,6 +48,7 @@ public class SeatStatus extends JFrame{
       
       setLocationRelativeTo(null);
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      ImageIcon icon = new ImageIcon(SeatStatus.class.getResource("/images/Seat.png"));
     //메뉴바 추가
       setJMenuBar(MenuUtill.createMenuBar(this));
       
@@ -326,6 +327,11 @@ public class SeatStatus extends JFrame{
         	 OpenClose(btnSeat34.getText());
          });
       
+      JLabel lblNewLabel = new JLabel("");
+      lblNewLabel.setIcon(icon);
+      lblNewLabel.setBounds(-16, -62, 550, 840);
+      getContentPane().add(lblNewLabel);
+      
       //예약된 좌석 처리
       try (Connection conn = DB.getConnection()) {
     	    String sql = "SELECT seat FROM reservations";
@@ -342,11 +348,6 @@ public class SeatStatus extends JFrame{
     	} catch (Exception ex) {
     	    ex.printStackTrace();
     	}
-      
-      JLabel lblNewLabel = new JLabel("");
-      lblNewLabel.setIcon(new ImageIcon(SeatStatus.class.getResource("/images/Seat.png")));
-      lblNewLabel.setBounds(-16, -62, 550, 840);
-      getContentPane().add(lblNewLabel);
    }
    
    private void updateReservedSeats() {

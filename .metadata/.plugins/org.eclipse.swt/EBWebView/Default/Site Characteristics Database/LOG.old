@@ -1,3 +1,5 @@
-2025/06/15-22:51:38.109 24cc Reusing MANIFEST C:\Users\gimse\OneDrive\바탕 화면\real_project\Java_Project1\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001
-2025/06/15-22:51:38.114 24cc Recovering log #3
-2025/06/15-22:51:38.114 24cc Reusing old log C:\Users\gimse\OneDrive\바탕 화면\real_project\Java_Project1\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000003.log 
+2025/06/18-07:25:40.346 2078 Log #3: 3 ops saved to Table #4 OK
+2025/06/18-07:25:40.349 2078 Archiving D:\인하\Java_Project1\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/000003.log: OK
+2025/06/18-07:25:40.349 2078 Table #4: 3 entries OK
+2025/06/18-07:25:40.350 2078 Archiving D:\인하\Java_Project1\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database/MANIFEST-000001: OK
+2025/06/18-07:25:40.351 2078 **** Repaired leveldb D:\인하\Java_Project1\.metadata\.plugins\org.eclipse.swt\EBWebView\Default\Site Characteristics Database; recovered 1 files; 219 bytes. Some data may have been lost. ****
