@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Project2</groupId>
+  <artifactId>test1</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Project2</name>
+
+<dependencies>
+  <!-- 기존 의존성 -->
+  <dependency>
+    <groupId>com.fifesoft</groupId>
+    <artifactId>rsyntaxtextarea</artifactId>
+    <version>3.6.0</version>
+  </dependency>
+  <dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>8.4.0</version>
+  </dependency>
+
+  <!-- FlatLaf: 모던 LookAndFeel (버전 3.0은 OK) -->
+  <dependency>
+    <groupId>com.formdev</groupId>
+    <artifactId>flatlaf</artifactId>
+    <version>3.0</version>
+  </dependency>
+
+  <!-- MigLayout: 공식 5.x 라인은 5.3 → 5.3 버전 사용하세요 :contentReference[oaicite:0]{index=0} -->
+  <dependency>
+    <groupId>com.miglayout</groupId>
+    <artifactId>miglayout-swing</artifactId>
+    <version>5.3</version>
+  </dependency>
+	  <dependency>
+	  <groupId>com.formdev</groupId>
+	  <artifactId>flatlaf-extras</artifactId>
+	  <version>3.6</version>
+	</dependency>
+  <!-- (원한다면 최신 11.4.2 버전도 사용 가능) :contentReference[oaicite:1]{index=1} -->
+
+  <!-- Trident: 중앙에 올라간 최신은 1.2 → 1.2 버전 사용하세요 :contentReference[oaicite:2]{index=2} -->
+  <dependency>
+    <groupId>org.pushing-pixels</groupId>
+    <artifactId>trident</artifactId>
+    <version>1.2</version>
+  </dependency>
+</dependencies>
+</project>
